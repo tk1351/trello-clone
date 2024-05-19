@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import { useUpdateColumnTitle } from "../../hooks/useUpdateColumnTitle";
+import styles from './index.module.css'
 
 export const TaskCard: FC = () => {
 	const {
@@ -13,12 +14,13 @@ export const TaskCard: FC = () => {
 		handleSubmitColumnTitle,
 	} = useUpdateColumnTitle();
 	return (
-		<div>
+		<div className={styles.container}>
 			{/* TODO: キーボードイベントを追加 */}
 			<div
 				onClick={handleClickColumnTitle}
 				onKeyDown={() => {}}
-				data-testid="column-container"
+				data-testid="column-title-container"
+				className={styles['column-title-container']}
 			>
 				{isInput ? (
 					<form onSubmit={handleSubmitColumnTitle}>

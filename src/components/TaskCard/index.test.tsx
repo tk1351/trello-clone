@@ -18,7 +18,7 @@ describe("TaskCardComponent", () => {
 		it("カラムタイトル部分をクリックしたとき、入力欄が表示されること", async () => {
 			const user = userEvent.setup();
 			render(<TaskCard />);
-			await user.click(screen.getByTestId("column-container"));
+			await user.click(screen.getByTestId("column-title-container"));
 			expect(
 				screen.getByPlaceholderText("input task title"),
 			).toBeInTheDocument();
@@ -26,7 +26,7 @@ describe("TaskCardComponent", () => {
 		it("入力欄に値を入力すると、カラムタイトルが更新されること", async () => {
 			const user = userEvent.setup();
 			render(<TaskCard />);
-			await user.click(screen.getByTestId("column-container"));
+			await user.click(screen.getByTestId("column-title-container"));
 			await user.type(screen.getByPlaceholderText("input task title"), "test");
 			await user.keyboard("{Enter}");
 			expect(screen.getByRole("heading")).toHaveTextContent("test");
@@ -34,7 +34,7 @@ describe("TaskCardComponent", () => {
 		it("入力中にフォーカスを外すと、カラムタイトルが元の値に戻ること", async () => {
 			const user = userEvent.setup();
 			render(<TaskCard />);
-			await user.click(screen.getByTestId("column-container"));
+			await user.click(screen.getByTestId("column-title-container"));
 			await user.type(screen.getByPlaceholderText("input task title"), "test");
 			await user.keyboard("{Tab}");
 			expect(screen.getByRole("heading")).toHaveTextContent("Column Title");
