@@ -8,7 +8,7 @@ import {
 
 export const useUpdateColumnTitle = () => {
 	const [isInput, setIsInput] = useState(false);
-	const [columnTitle, setColumnTitle] = useState("Task Title");
+	const [columnTitle, setColumnTitle] = useState("Column Title");
 	const [columnTitleValue, setColumnTitleValue] = useState("");
 
 	const columnTitleInputRef = useRef<HTMLInputElement>(null);

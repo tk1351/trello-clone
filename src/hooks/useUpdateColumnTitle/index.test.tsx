@@ -7,9 +7,9 @@ describe("useUpdateColumnTitle", () => {
 			const { result } = renderHook(useUpdateColumnTitle);
 			expect(result.current.isInput).toBeFalsy();
 		});
-		it('columnTitle が "Task Title" であること', () => {
+		it('columnTitle が "Column Title" であること', () => {
 			const { result } = renderHook(useUpdateColumnTitle);
-			expect(result.current.columnTitle).toBe("Task Title");
+			expect(result.current.columnTitle).toBe("Column Title");
 		});
 		it("columnTitleValue が空文字であること", () => {
 			const { result } = renderHook(useUpdateColumnTitle);
@@ -28,7 +28,7 @@ describe("useUpdateColumnTitle", () => {
 			result.current.columnTitleValue = "test";
 			act(() => result.current.handleBlurColumnTitle());
 			expect(result.current.isInput).toBeFalsy();
-			expect(result.current.columnTitleValue).toBe("Task Title");
+			expect(result.current.columnTitleValue).toBe("Column Title");
 		});
 	});
 });
