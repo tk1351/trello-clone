@@ -5,3 +5,25 @@
 .column-title-container {
     cursor: pointer;
 }
+
+.task-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.task-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 1px rgb(75,75,75);
+}
+
+.trash-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}

@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import { TaskCard } from "./index.tsx";
 import userEvent from "@testing-library/user-event";
+import { TaskCard } from "./index.tsx";
 
 describe("TaskCardComponent", () => {
 	describe("a11y", () => {
@@ -12,6 +12,12 @@ describe("TaskCardComponent", () => {
 		it('[role="button"] が存在すること', () => {
 			render(<TaskCard />);
 			expect(screen.getByRole("button")).toBeInTheDocument();
+		});
+	});
+	describe("render", () => {
+		it('タスクが無いとき、 "No task" と表示されること', () => {
+			render(<TaskCard />);
+			expect(screen.getByText("No task")).toBeInTheDocument();
 		});
 	});
 	describe("event", () => {
@@ -39,5 +45,14 @@ describe("TaskCardComponent", () => {
 			await user.keyboard("{Tab}");
 			expect(screen.getByRole("heading")).toHaveTextContent("Column Title");
 		});
+		it("タスクを追加すると、リストに表示されること", async () => {
+			const user = userEvent.setup();
+			render(<TaskCard />);
+			await user.type(screen.getByPlaceholderText("add a task"), "test task");
+			await user.keyboard("{Enter}");
+			expect(screen.getByRole("list")).toBeInTheDocument();
+			expect(screen.getByRole("listitem")).toHaveTextContent("test task");
+		});
+		it.todo("タスク名が空文字の場合、リストに追加されないこと");
 	});
 });
