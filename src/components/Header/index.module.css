@@ -1,0 +1,12 @@
+.header {
+    height: 40px;
+    width: 100vw;
+    background-color: rgb(102, 94, 74);
+    display: grid;
+    place-content: center;
+}
+
+.title {
+    color: aliceblue;
+    font-size: 24px;
+}
