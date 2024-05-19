@@ -1,0 +1,6 @@
+.container {
+    background-image: url("../src/assets/11-2500x1667.jpg");
+    background-size: cover;
+    background-color:rgba(255,255,255,0.4);
+    background-blend-mode:lighten;
+}
