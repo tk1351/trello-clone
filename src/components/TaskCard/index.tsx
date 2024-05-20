@@ -16,8 +16,17 @@ export const TaskCard: FC = () => {
 		handleSubmitColumnTitle,
 	} = useUpdateColumnTitle();
 
-	const { taskName, taskList, handleChangeTaskName, handleSubmitTaskName } =
-		useAddTask();
+	const {
+		taskName,
+		taskList,
+		setTaskList,
+		handleChangeTaskName,
+		handleSubmitTaskName,
+	} = useAddTask();
+
+	const handleDeleteTask = (targetId: string) => {
+		setTaskList(taskList.filter(({ id }) => id !== targetId));
+	};
 	return (
 		<div className={styles.container}>
 			{/* TODO: キーボードイベントを追加 */}
@@ -58,6 +67,8 @@ export const TaskCard: FC = () => {
 								type="button"
 								className={styles["trash-button"]}
 								aria-label="remove task"
+								data-testid="remove-task-button"
+								onClick={() => handleDeleteTask(id)}
 							>
 								<img src={TrashCanSolidIcon} alt="" width={15} height={15} />
 							</button>

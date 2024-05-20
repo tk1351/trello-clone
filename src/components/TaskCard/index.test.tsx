@@ -54,5 +54,13 @@ describe("TaskCardComponent", () => {
 			expect(screen.getByRole("listitem")).toHaveTextContent("test task");
 		});
 		it.todo("タスク名が空文字の場合、リストに追加されないこと");
+		it("追加されたタスクを削除できること", async () => {
+			const user = userEvent.setup();
+			render(<TaskCard />);
+			await user.type(screen.getByPlaceholderText("add a task"), "test task");
+			await user.keyboard("{Enter}");
+			await user.click(screen.getByTestId("remove-task-button"));
+			expect(screen.queryByRole("listitem")).not.toBeInTheDocument();
+		});
 	});
 });

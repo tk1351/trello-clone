@@ -27,6 +27,7 @@ export const useAddTask = () => {
 	return {
 		taskName,
 		taskList,
+		setTaskList,
 		handleChangeTaskName,
 		handleSubmitTaskName,
 	};
